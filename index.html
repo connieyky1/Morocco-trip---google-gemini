@@ -7,137 +7,136 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/8244/8244583.png">
+    <link rel="apple-touch-icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flag_of_Morocco.svg/512px-Flag_of_Morocco.svg.png">
 
     <style>
         :root {
-            --cream: #F9F7F2;
-            --sand: #EAE3D6;
-            --taupe: #8C7E6D;
-            --charcoal: #333333;
+            --color-cream: #FDFBFA;
+            --color-sand: #EAE3D6;
+            --color-taupe: #8C7E6D;
         }
-
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--cream);
-            color: var(--charcoal);
+            background-color: var(--color-cream);
+            color: #333;
             -webkit-font-smoothing: antialiased;
         }
-
-        h1, h2, h3, .serif {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-        }
-
-        .editorial-image {
-            border-radius: 100px 100px 0 0; /* Arched frame */
+        .serif { font-family: 'Playfair Display', serif; }
+        .arched-image {
+            border-radius: 160px 160px 0 0;
             overflow: hidden;
             aspect-ratio: 4/5;
             object-fit: cover;
         }
-
         .nav-blur {
-            background: rgba(249, 247, 242, 0.8);
+            background: rgba(253, 251, 250, 0.9);
             backdrop-filter: blur(10px);
-            border-top: 1px solid rgba(0,0,0,0.05);
+            border-top: 0.5px solid rgba(140, 126, 109, 0.2);
         }
-
         .divider {
             height: 1px;
-            background-color: var(--sand);
-            margin: 2rem 0;
-            width: 100%;
+            background-color: var(--color-sand);
+            margin: 2.5rem 0;
         }
-
-        /* Hide scrollbars */
+        /* Custom Scrollbar */
         ::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body x-data="app()" class="pb-24">
+<body x-data="travelApp()" class="pb-20">
 
-    <header class="pt-12 pb-6 px-6 text-center">
-        <div class="inline-block w-16 mb-2">
-            <svg viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100" height="60" fill="#c1272d" rx="2"/>
-                <path d="M50 20 L54 32 L66 32 L56 40 L60 52 L50 44 L40 52 L44 40 L34 32 L46 32 Z" fill="none" stroke="#006233" stroke-width="2.5"/>
-            </svg>
-        </div>
-        <p class="text-[10px] tracking-[0.2em] uppercase text-stone-500">Private Journey · Jan 2026</p>
+    <header class="pt-12 pb-8 flex flex-col items-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Flag_of_Morocco.svg" 
+             class="w-10 h-auto mb-3 shadow-sm rounded-sm" alt="Morocco Logo">
+        <p class="text-[10px] tracking-[0.3em] uppercase text-stone-400">Private Journey</p>
     </header>
 
-    <main class="px-6 max-w-md mx-auto">
+    <main class="px-6 max-w-lg mx-auto">
         
         <section x-show="view === 'home'" x-transition>
-            <div class="editorial-image mb-8 bg-stone-200">
-                <img src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&q=80&w=800" alt="Morocco" class="w-full h-full object-cover">
+            <div class="arched-image mb-10 bg-stone-100 shadow-sm">
+                <img src="https://images.unsplash.com/photo-1539020290131-9550b5caef40?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover">
             </div>
             
-            <h1 class="text-3xl mb-4 text-center">The Kingdom of Light</h1>
-            <p class="text-sm leading-relaxed text-stone-600 mb-8 text-center px-4">
-                A curated passage through the red walls of Marrakesh, the golden dunes of the Sahara, and the ancient soul of Fes.
-            </p>
+            <h1 class="serif text-2xl mb-4 text-center">Morocco Overview</h1>
+            <p class="text-[13px] leading-relaxed text-stone-600 mb-10 text-center">A curation of the Kingdom’s most soulful corners, from the red walls of Marrakesh to the intellectual heartbeat of Fes.</p>
 
-            <div class="divider"></div>
-
-            <div class="space-y-8">
-                <div>
-                    <h3 class="text-xs uppercase tracking-widest text-stone-400 mb-2">History & Etiquette</h3>
-                    <p class="text-[13px] leading-relaxed italic">Morocco is a tapestry of Berber, Arab, and European influences. When visiting mosques or local homes, please ensure shoulders and knees are covered. A small tip (5-10%) is customary for service.</p>
+            <div class="space-y-12">
+                <div class="border-t border-stone-200 pt-6">
+                    <h3 class="text-[11px] uppercase tracking-widest text-stone-400 mb-3">History & Culture</h3>
+                    <p class="text-[14px] leading-relaxed italic text-stone-700">Morocco is a crossroads of Berber, Arab, and Mediterranean civilizations. Etiquette favors modesty; we recommend covering shoulders and knees when exploring the Medinas.</p>
                 </div>
-                
-                <div>
-                    <h3 class="text-xs uppercase tracking-widest text-stone-400 mb-2">Jan 17–24 Climate</h3>
-                    <p class="text-[13px] leading-relaxed">Day: 18°C–20°C | Night: 6°C. The desert cools rapidly at sundown. Layering is essential; bring a light wool coat and comfortable walking shoes for the medina cobblestones.</p>
+
+                <div class="border-t border-stone-200 pt-6">
+                    <h3 class="text-[11px] uppercase tracking-widest text-stone-400 mb-3">Cuisine</h3>
+                    <p class="text-[14px] leading-relaxed text-stone-700">Expect slow-cooked Tagines, aromatic couscous, and the hospitality of fresh mint tea—the "Berber Whiskey."</p>
+                </div>
+
+                <div class="border-t border-stone-200 pt-6">
+                    <h3 class="text-[11px] uppercase tracking-widest text-stone-400 mb-3">Weather: Jan 17–24</h3>
+                    <p class="text-[14px] leading-relaxed text-stone-700">Crisp mornings (8°C) transitioning to golden afternoons (19°C). Pack light layers, a warm coat for desert nights, and refined walking shoes.</p>
                 </div>
             </div>
         </section>
 
         <section x-show="view === 'itinerary'" x-transition>
-            <h2 class="text-2xl text-center mb-10">The Passage</h2>
+            <h2 class="serif text-2xl text-center mb-10 italic">The Daily Journal</h2>
             
-            <div class="space-y-12 relative border-l border-stone-200 ml-2 pl-6">
-                <template x-for="day in itinerary" :key="day.date">
-                    <div class="relative">
-                        <div class="absolute -left-[31px] top-1 w-2 h-2 rounded-full bg-stone-400"></div>
-                        <p class="text-[10px] tracking-widest uppercase text-stone-400 mb-1" x-text="day.date"></p>
-                        <h4 class="serif text-lg mb-2" x-text="day.title"></h4>
-                        <p class="text-[13px] text-stone-600 leading-relaxed mb-4" x-text="day.desc"></p>
-                        <button @click="openPlace(day.spot)" class="text-[11px] border-b border-stone-300 pb-0.5 uppercase tracking-tighter">View Details</button>
+            <div class="space-y-16">
+                <template x-for="(day, index) in schedule" :key="index">
+                    <div class="group">
+                        <span class="text-[10px] tracking-widest text-stone-400 uppercase" x-text="day.date"></span>
+                        <h3 class="serif text-xl mt-1 mb-4" x-text="day.title"></h3>
+                        
+                        <div class="overflow-x-auto flex gap-3 mb-6 snap-x pb-2">
+                            <template x-for="img in day.images">
+                                <img :src="img" class="h-48 w-40 object-cover rounded-sm snap-start">
+                            </template>
+                        </div>
+                        
+                        <p class="text-[13px] leading-relaxed text-stone-600 mb-6" x-text="day.longDesc"></p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <template x-for="site in day.sites">
+                                <span @click="openSite(site)" class="text-[10px] bg-stone-100 px-3 py-1.5 rounded-full uppercase tracking-tighter cursor-pointer">View Details</span>
+                            </template>
+                        </div>
+                        <div class="divider opacity-50"></div>
                     </div>
                 </template>
             </div>
         </section>
 
         <section x-show="view === 'desert'" x-transition>
-            <div class="editorial-image mb-8 bg-stone-200">
-                <img src="https://images.unsplash.com/photo-1505051508008-923feaf90180?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover">
+            <div class="arched-image mb-8 bg-stone-100">
+                <img src="https://images.unsplash.com/photo-1505051508008-923feaf90180?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover">
             </div>
-            <h2 class="text-2xl mb-4">The Sahara Crossing</h2>
-            <p class="text-xs uppercase tracking-widest text-stone-400 mb-6">3 Days · Marrakesh to Fes</p>
+            <h2 class="serif text-2xl mb-4">The Sahara Crossing</h2>
+            <p class="text-[11px] tracking-widest uppercase text-stone-400 mb-8">Marrakesh → Ait Ben Haddou → Merzouga → Fes</p>
             
             <div class="space-y-6 text-[14px] leading-relaxed text-stone-700">
-                <p>Leaving the bustle of Marrakesh, we ascend the High Atlas via the Tizi n'Tichka pass. The journey is a cinematic transition from red clay villages to the lush palms of the Dades Valley.</p>
-                <div class="bg-sand p-6 rounded-sm">
-                    <h4 class="serif text-md mb-2">The Merzouga Night</h4>
-                    <p class="text-[13px]">As the sun dips below the Erg Chebbi dunes, you will arrive at your luxury camp via camelback. Expect a night of traditional Berber music under a canopy of stars untouched by light pollution.</p>
+                <p>This is the soul of the journey—a three-day passage through the High Atlas Mountains into the golden silence of the Erg Chebbi dunes.</p>
+                <div class="bg-stone-50 p-6 italic border-l border-stone-200">
+                    "Expect rhythmic travel. The pacing is slow to allow the landscape to shift from red clay to green palm groves to infinite sand."
                 </div>
-                <p>The final leg carries us through the Middle Atlas cedar forests—home to Barbary macaques—before arriving in the intellectual capital of Fes.</p>
+                <p>Overnight at a luxury desert camp includes traditional Berber music around a campfire and a camel trek at dawn.</p>
             </div>
         </section>
 
-        <section x-show="view === 'map'" x-transition>
-            <h2 class="text-2xl text-center mb-8">Master Collection</h2>
-            <div class="grid grid-cols-1 gap-4">
-                <template x-for="place in places" :key="place.name">
-                    <div @click="openPlace(place)" class="flex items-center justify-between p-4 bg-white/50 border border-stone-100 rounded-lg">
+        <section x-show="view === 'places'" x-transition>
+            <h2 class="serif text-2xl text-center mb-10">The Collection</h2>
+            
+            <div class="space-y-4">
+                <template x-for="place in masterPlaces" :key="place.name">
+                    <div @click="openSite(place.name)" class="flex justify-between items-center py-4 border-b border-stone-100 active:opacity-50 transition-opacity">
                         <div>
-                            <p class="serif text-md" x-text="place.name"></p>
-                            <p class="text-[10px] text-stone-400 uppercase tracking-widest" x-text="place.city"></p>
+                            <h4 class="serif text-md" x-text="place.name"></h4>
+                            <p class="text-[10px] uppercase text-stone-400 tracking-widest" x-text="place.city"></p>
                         </div>
                         <svg class="w-4 h-4 text-stone-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg>
                     </div>
@@ -145,82 +144,91 @@
             </div>
         </section>
 
-        <div x-show="selectedPlace" class="fixed inset-0 z-50 bg-cream overflow-y-auto p-6" x-transition>
-            <button @click="selectedPlace = null" class="fixed top-8 right-6 z-50 text-stone-500 uppercase text-[10px] tracking-widest">Close</button>
-            
-            <div x-if="selectedPlace">
-                <div class="editorial-image mb-8 mt-12 bg-stone-200">
-                    <img :src="selectedPlace?.img" class="w-full h-full object-cover">
+        <div x-show="selectedPlace" class="fixed inset-0 z-50 bg-[#FDFBFA] overflow-y-auto" x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-y-full">
+            <div class="p-6 pt-16">
+                <button @click="selectedPlace = null" class="fixed top-8 right-6 text-[11px] uppercase tracking-widest text-stone-400 z-50">Close</button>
+                
+                <div x-if="selectedPlace">
+                    <div class="arched-image mb-8">
+                        <img :src="selectedPlace?.images[0]" class="w-full h-full object-cover">
+                    </div>
+                    <h2 class="serif text-3xl mb-1" x-text="selectedPlace?.name"></h2>
+                    <p class="text-[10px] uppercase tracking-widest text-stone-400 mb-8" x-text="selectedPlace?.city"></p>
+                    
+                    <p class="text-[14px] leading-relaxed text-stone-700 mb-10" x-text="selectedPlace?.description"></p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-12">
+                        <img :src="selectedPlace?.images[1]" class="rounded-sm object-cover h-40 w-full">
+                        <img :src="selectedPlace?.images[2]" class="rounded-sm object-cover h-40 w-full">
+                    </div>
+
+                    <a :href="'https://www.google.com/maps/search/?api=1&query=' + selectedPlace?.name + ' ' + selectedPlace?.city" 
+                       target="_blank" 
+                       class="block w-full py-4 bg-stone-800 text-white text-center text-[11px] uppercase tracking-widest rounded-sm">
+                        Navigate in Google Maps
+                    </a>
                 </div>
-                <h2 class="text-3xl mb-2" x-text="selectedPlace?.name"></h2>
-                <p class="text-xs uppercase tracking-widest text-stone-400 mb-8" x-text="selectedPlace?.city"></p>
-                
-                <p class="text-[14px] leading-relaxed text-stone-700 mb-8" x-text="selectedPlace?.bio"></p>
-                
-                <a :href="'https://www.google.com/maps/search/?api=1&query=' + selectedPlace?.name + ' ' + selectedPlace?.city" 
-                   target="_blank"
-                   class="block w-full text-center py-4 bg-stone-800 text-white text-[12px] uppercase tracking-widest rounded-sm">
-                   Open in Maps
-                </a>
             </div>
         </div>
 
     </main>
 
-    <nav class="fixed bottom-0 left-0 right-0 nav-blur px-6 py-4 flex justify-between items-center z-40">
-        <button @click="view = 'home'" :class="view === 'home' ? 'text-stone-900' : 'text-stone-400'" class="flex flex-col items-center">
-            <span class="text-[10px] uppercase tracking-tighter">Home</span>
-        </button>
-        <button @click="view = 'itinerary'" :class="view === 'itinerary' ? 'text-stone-900' : 'text-stone-400'" class="flex flex-col items-center">
-            <span class="text-[10px] uppercase tracking-tighter">Plan</span>
-        </button>
-        <button @click="view = 'desert'" :class="view === 'desert' ? 'text-stone-900' : 'text-stone-400'" class="flex flex-col items-center">
-            <span class="text-[10px] uppercase tracking-tighter">Desert</span>
-        </button>
-        <button @click="view = 'map'" :class="view === 'map' ? 'text-stone-900' : 'text-stone-400'" class="flex flex-col items-center">
-            <span class="text-[10px] uppercase tracking-tighter">Places</span>
-        </button>
+    <nav class="fixed bottom-0 left-0 right-0 nav-blur px-8 py-5 flex justify-between items-center z-40">
+        <button @click="view = 'home'" :class="view === 'home' ? 'text-stone-900' : 'text-stone-300'"><span class="text-[10px] uppercase tracking-tighter">Home</span></button>
+        <button @click="view = 'itinerary'" :class="view === 'itinerary' ? 'text-stone-900' : 'text-stone-300'"><span class="text-[10px] uppercase tracking-tighter">Journal</span></button>
+        <button @click="view = 'desert'" :class="view === 'desert' ? 'text-stone-900' : 'text-stone-300'"><span class="text-[10px] uppercase tracking-tighter">Desert</span></button>
+        <button @click="view = 'places'" :class="view === 'places' ? 'text-stone-900' : 'text-stone-300'"><span class="text-[10px] uppercase tracking-tighter">Places</span></button>
     </nav>
 
     <script>
-        function app() {
+        function travelApp() {
             return {
                 view: 'home',
                 selectedPlace: null,
-                openPlace(placeName) {
-                    this.selectedPlace = this.places.find(p => p.name === placeName) || this.places[0];
+                openSite(name) {
+                    this.selectedPlace = this.masterPlaces.find(p => p.name === name);
                 },
-                itinerary: [
-                    { date: 'Jan 17', title: 'Arrival in the Red City', desc: 'Transfer to Mouassine. Evening light dinner at Jemaa el-Fna.', spot: 'Jemaa el-Fna' },
-                    { date: 'Jan 18', title: 'Palaces & Hidden Souks', desc: 'Exploring Bahia Palace and the Saadian Tombs before a guided walk through the Mellah.', spot: 'Bahia Palace' },
-                    { date: 'Jan 19', title: 'Gardens of Majorelle', desc: 'A morning at the YSL Museum followed by a traditional hammam ritual.', spot: 'Majorelle Garden' },
-                    { date: 'Jan 20-22', title: 'The Desert Crossing', desc: 'Departing Marrakesh for the dunes of Merzouga via Ait Ben Haddou.', spot: 'Ait Ben Haddou' },
-                    { date: 'Jan 23', title: 'The Gates of Fes', desc: 'Deep dive into the world’s largest car-free urban space.', spot: 'Chouara Tannery' }
+                schedule: [
+                    { 
+                        date: 'Jan 17', 
+                        title: 'Arrival in Marrakesh', 
+                        longDesc: 'Airport arrival & riad transfer. Settle into Riad La Lumière d’Étoile. Evening light dinner near Jemaa el-Fna to soak in the atmosphere.', 
+                        sites: ['Jemaa el-Fna'],
+                        images: ['https://images.unsplash.com/photo-1590424753062-325149363079?w=600', 'https://images.unsplash.com/photo-1548013146-72479768bbaa?w=600']
+                    },
+                    { 
+                        date: 'Jan 18', 
+                        title: 'The Imperial Medinas', 
+                        longDesc: 'Morning visit to Bahia Palace and Saadian Tombs. Afternoon exploring the Mellah and a guided walk through the Mouassine souks.', 
+                        sites: ['Bahia Palace', 'Saadian Tombs'],
+                        images: ['https://images.unsplash.com/photo-1598533031448-47e9e623992b?w=600', 'https://images.unsplash.com/photo-1613083091150-098864703770?w=600']
+                    },
+                    { 
+                        date: 'Jan 20-22', 
+                        title: 'The Great Desert Tour', 
+                        longDesc: 'Cross the High Atlas via Tizi n\'Tichka. Explore Ait Ben Haddou (UNESCO). Travel through Dades Valley and Skoura before arriving at the Merzouga dunes for a sunset camel trek and luxury camping.', 
+                        sites: ['Chouara Tannery'],
+                        images: ['https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600', 'https://images.unsplash.com/photo-1554181816-52c668630760?w=600']
+                    }
                 ],
-                places: [
+                masterPlaces: [
                     { 
                         name: 'Jemaa el-Fna', 
                         city: 'Marrakesh', 
-                        img: 'https://images.unsplash.com/photo-1590424753062-325149363079?auto=format&fit=crop&q=80&w=800',
-                        bio: 'The pulse of Marrakesh. A UNESCO Masterpiece of the Oral and Intangible Heritage of Humanity, where storytellers, musicians, and food stalls create a nightly theater.'
-                    },
-                    { 
-                        name: 'Bahia Palace', 
-                        city: 'Marrakesh', 
-                        img: 'https://images.unsplash.com/photo-1598533031448-47e9e623992b?auto=format&fit=crop&q=80&w=800',
-                        bio: 'A 19th-century masterpiece intended to be the greatest palace of its time. Its name means "brilliance," featuring intricate marquetry and stucco.'
-                    },
-                    { 
-                        name: 'Majorelle Garden', 
-                        city: 'Marrakesh', 
-                        img: 'https://images.unsplash.com/photo-1613083091150-098864703770?auto=format&fit=crop&q=80&w=800',
-                        bio: 'Designed by Jacques Majorelle and later restored by Yves Saint Laurent, this electric blue oasis is a botanical sanctuary from the medina heat.'
+                        description: 'The square is a massive theater of daily life, hosting snake charmers, Gnaoua musicians, and food stalls. It is the heart of the Red City.',
+                        images: ['https://images.unsplash.com/photo-1590424753062-325149363079?w=800', 'https://images.unsplash.com/photo-1598533031448-47e9e623992b?w=800', 'https://images.unsplash.com/photo-1548013146-72479768bbaa?w=800']
                     },
                     { 
                         name: 'Chouara Tannery', 
                         city: 'Fes', 
-                        img: 'https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?auto=format&fit=crop&q=80&w=800',
-                        bio: 'The largest and oldest tannery in Fes. Since the 11th century, leather has been processed here in stone vessels filled with natural dyes.'
+                        description: 'The largest of the three ancient tanneries in Fes. Built in the 11th century, it remains one of the world\'s most visceral sights.',
+                        images: ['https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=800', 'https://images.unsplash.com/photo-1539405508-372146039162?w=800', 'https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=800']
+                    },
+                    { 
+                        name: 'Bahia Palace', 
+                        city: 'Marrakesh', 
+                        description: 'A 19th-century masterpiece intended to be the greatest palace of its time. Features intricate marquetry and painted stucco.',
+                        images: ['https://images.unsplash.com/photo-1598533031448-47e9e623992b?w=800', 'https://images.unsplash.com/photo-1613083091150-098864703770?w=800', 'https://images.unsplash.com/photo-1518012133497-29007c08253a?w=800']
                     }
                 ]
             }
