@@ -7,257 +7,142 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Morocco">
     <title>Morocco | Private Journey</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --bg: #F9F7F2;
-            --accent: #7a4a2e;
-            --text: #2b2b2b;
-            --light-text: #777;
-            --card-bg: #ffffff;
-        }
+        :root { --bg: #F9F7F2; --accent: #7a4a2e; --text: #2b2b2b; --light-text: #6e6e6e; --card: #ffffff; --divider: #e0ddd7; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; padding-bottom: 90px; }
+        header { text-align: center; padding: 50px 20px 30px; }
+        header img { width: 45px; margin-bottom: 15px; }
+        h1 { font-family: 'Cormorant Garamond', serif; font-size: 32px; margin: 0; font-weight: 400; letter-spacing: 1px; }
+        .subtitle { font-size: 11px; text-transform: uppercase; letter-spacing: 3px; color: var(--light-text); margin-top: 8px; }
+        
+        nav { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: 92%; max-width: 450px; background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(12px); display: flex; justify-content: space-around; padding: 14px 0; border-radius: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.08); z-index: 1000; border: 1px solid var(--divider); }
+        nav button { background: none; border: none; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--light-text); font-weight: 500; transition: 0.3s; }
+        nav button.active { color: var(--accent); }
 
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            padding-bottom: 80px; /* Space for nav */
-        }
+        main { padding: 0 20px; max-width: 600px; margin: 0 auto; animation: fadeIn 0.6s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        header {
-            text-align: center;
-            padding: 40px 20px 20px;
-            background: var(--bg);
-        }
-
-        header img {
-            width: 50px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-        }
-
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            margin: 0;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        .subtitle {
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--light-text);
-            margin-top: 5px;
-        }
-
-        /* Fixed Bottom Navigation for iPhone */
-        nav {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 400px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: space-around;
-            padding: 12px 0;
-            border-radius: 40px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            z-index: 1000;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-
-        nav button {
-            background: none;
-            border: none;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text);
-            font-weight: 400;
-        }
-
-        nav button.active {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        main {
-            padding: 10px 20px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 2px; /* Editorial square look */
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-        }
-
-        .card img {
-            width: 100%;
-            height: 250px;
-            border-radius: 0;
-            margin-bottom: 15px;
-            object-fit: cover;
-            /* Arch shape for editorial feel */
-            clip-path: ellipse(100% 100% at 50% 100%);
-            border-top-left-radius: 150px;
-            border-top-right-radius: 150px;
-        }
-
-        h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-
-        h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
-            margin: 15px 0 8px;
-        }
-
-        p {
-            font-size: 14px;
-            color: #444;
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-        }
-
-        .btn:hover {
-            background: var(--accent);
-            color: white;
-        }
+        .section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); display: block; margin-bottom: 10px; text-align: center; }
+        .card { background: var(--card); padding: 25px; margin-bottom: 30px; border: 1px solid var(--divider); }
+        .card img { width: 100%; height: 280px; object-fit: cover; margin-bottom: 20px; border-top-left-radius: 120px; border-top-right-radius: 120px; clip-path: ellipse(100% 100% at 50% 100%); }
+        
+        h2 { font-family: 'Cormorant Garamond', serif; font-size: 26px; margin-top: 0; font-weight: 500; }
+        h3 { font-family: 'Cormorant Garamond', serif; font-size: 20px; margin: 20px 0 10px; color: var(--accent); }
+        p { font-size: 14.5px; margin-bottom: 15px; color: #3d3d3d; }
+        .detail-item { border-left: 2px solid var(--accent); padding-left: 15px; margin: 20px 0; }
+        .btn { display: block; text-align: center; padding: 12px; border: 1px solid var(--accent); color: var(--accent); text-decoration: none; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-top: 15px; }
+        
+        ul { padding-left: 18px; margin-bottom: 15px; }
+        ul li { font-size: 14px; margin-bottom: 8px; color: #3d3d3d; }
     </style>
 </head>
-
 <body>
 
 <header>
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flag_of_Morocco.svg/125px-Flag_of_Morocco.svg.png" alt="Morocco Flag">
-    <h1>Morocco</h1>
-    <p class="subtitle">Private Journey · Jan 17–24</p>
+    <h1>Kingdom of Morocco</h1>
+    <p class="subtitle">Jan 17 – Jan 24, 2026</p>
 </header>
 
 <main id="app"></main>
 
 <nav>
     <button onclick="show('home', this)" class="active">Overview</button>
-    <button onclick="show('marrakech', this)">Marrakech</button>
+    <button onclick="show('itinerary', this)">Itinerary</button>
     <button onclick="show('desert', this)">Desert</button>
-    <button onclick="show('fes', this)">Fes</button>
+    <button onclick="show('places', this)">Places</button>
 </nav>
 
 <script>
 const app = document.getElementById("app");
 
 function show(section, btn) {
-    // Update active button state
     document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
     if(btn) btn.classList.add('active');
-
     window.scrollTo(0,0);
-
-    if (section === "home") home();
-    if (section === "marrakech") marrakech();
-    if (section === "desert") desert();
-    if (section === "fes") fes();
+    
+    if (section === 'home') renderHome();
+    if (section === 'itinerary') renderItinerary();
+    if (section === 'desert') renderDesert();
+    if (section === 'places') renderPlaces();
 }
 
-function home() {
+function renderHome() {
     app.innerHTML = `
+        <span class="section-label">Cultural Essence</span>
         <div class="card">
-            <h2>The Kingdom</h2>
-            <p>Morocco is a sensory symphony where ancient traditions meet a sophisticated modern spirit. This journey is designed to immerse you in the "Maghreb al-Aqsa"—the Land of the Furthest Sunset.</p>
-            <p><strong>Jan 17–24:</strong> High Atlas, Sahara, and the Imperial Medinas.</p>
+            <h2>History & Heritage</h2>
+            <p>Morocco is a bridge between Africa, Europe, and the Middle East. From the indigenous Amazigh (Berber) tribes to the Arab conquests and French protectorate, the country is a layered masterpiece of architecture and tradition.</p>
+            <h3>Etiquette & Culture</h3>
+            <ul>
+                <li><strong>Greetings:</strong> A handshake and a slight nod is standard. Place your right hand over your heart after shaking hands as a sign of respect.</li>
+                <li><strong>Dining:</strong> Always use your right hand for eating. Bread is sacred—never throw it away.</li>
+                <li><strong>Photography:</strong> Always ask permission before photographing locals, especially in the souks.</li>
+            </ul>
         </div>
         <div class="card">
-            <h3>Weather & Packing</h3>
-            <p>January offers crisp, sunny days (18°C) and cool desert nights. We recommend light layers and a warm wrap for evenings in the Riad.</p>
+            <h2>Winter Season (Jan 17-24)</h2>
+            <p><strong>Weather:</strong> Expect sunny, crisp days (17°C - 20°C). However, temperatures drop sharply at night (6°C - 8°C).</p>
+            <p><strong>Packing:</strong> Bring a structured wool coat for Marrakesh evenings, a light puffer for the desert, and comfortable walking shoes for medina cobblestones.</p>
         </div>
     `;
 }
 
-function marrakech() {
+function renderItinerary() {
     app.innerHTML = `
+        <span class="section-label">The Journey Path</span>
         <div class="card">
-            <h2>Marrakech</h2>
-            <p><em>Riad La Lumière d’Étoile</em></p>
-            <p>The "Red City" demands curiosity. From hidden palaces to the rhythmic pulse of the souks.</p>
+            <h2>Trip Overview</h2>
+            <div class="detail-item"><strong>Jan 17:</strong> Arrive Marrakesh (7:00 PM). Transfer to Riad La Lumière d’Étoile.</div>
+            <div class="detail-item"><strong>Jan 18:</strong> Medina & Palaces. Sunset at Jemaa el-Fna.</div>
+            <div class="detail-item"><strong>Jan 19:</strong> Majorelle Gardens & Hammam wellness.</div>
+            <div class="detail-item"><strong>Jan 20-22:</strong> Desert Tour (Marrakesh → Fes).</div>
+            <div class="detail-item"><strong>Jan 23:</strong> Fes Medina exploration. Riad Fes Maya.</div>
+            <div class="detail-item"><strong>Jan 24:</strong> Departure. Fly Fes → London (8:35 PM).</div>
         </div>
-        ${place("Bahia Palace", "https://images.unsplash.com/photo-1590050752117-23a9d7fc2440?q=80&w=1000", "A 19th-century masterpiece of Moroccan architecture.", "Bahia+Palace")}
-        ${place("Majorelle Garden", "https://images.unsplash.com/photo-1613149633842-8c7601140087?q=80&w=1000", "The legendary blue botanical gardens of YSL.", "Majorelle+Garden")}
     `;
 }
 
-function desert() {
+function renderDesert() {
     app.innerHTML = `
+        <span class="section-label">Sahara Expedition</span>
         <div class="card">
-            <h2>Sahara Passage</h2>
-            <p>A transition from the peaks of the Atlas to the silence of the dunes.</p>
+            <img src="https://images.unsplash.com/photo-1505051508008-923feaf90180?q=80&w=1000">
+            <h2>The Desert Journey</h2>
+            <h3>Day 1: Atlas & Ait Ben Haddou</h3>
+            <p>Depart Marrakesh for Dades Valley. Cross Tizi n'Tichka (2,260m) and explore the UNESCO ksar of Ait Ben Haddou—a filming site for Gladiator and Game of Thrones.</p>
+            <h3>Day 2: Merzouga & Sahara</h3>
+            <p>Traverse the Todra Gorge. In the afternoon, embark on a camel trek into the Merzouga dunes for a luxury camp stay under the stars.</p>
+            <h3>Day 3: The Ziz Valley to Fes</h3>
+            <p>A long scenic drive through the Middle Atlas cedar forests. Look for Barbary macaques before arriving in the spiritual capital of Fes.</p>
+            <a href="https://moroccofabuloustravel.com/marrakech-to-fes-desert-tour" class="btn">View Full Tour Details</a>
         </div>
-        ${day("Dades Valley", "Cross the Tizi n’Tichka Pass to the ksar of Ait Ben Haddou.", "https://images.unsplash.com/photo-1549944850-84e00be4203b?q=80&w=1000")}
-        ${day("Merzouga Dunes", "Sunset camel trek into a luxury Sahara camp stay.", "https://images.unsplash.com/photo-1505051508008-923feaf90180?q=80&w=1000")}
     `;
 }
 
-function fes() {
+function renderPlaces() {
     app.innerHTML = `
+        <span class="section-label">Master Guide</span>
         <div class="card">
-            <h2>Fes</h2>
-            <p><em>Riad Fes Maya Suite</em></p>
-            <p>The intellectual soul of Morocco and the world's most complete medieval city.</p>
+            <h3>Marrakesh Must-See</h3>
+            <p><strong>Bahia Palace:</strong> The 'Palace of the Beautiful' showcasing 19th-century luxury.</p>
+            <p><strong>Ben Youssef Madrasa:</strong> An architectural jewel of Quranic study.</p>
+            <p><strong>Le Jardin Secret:</strong> A tranquil Islamic garden hidden in the Medina.</p>
+            <a href="https://www.google.com/maps/search/Marrakech+Top+Sights" class="btn">Explore Marrakesh Map</a>
         </div>
-        ${place("Chouara Tannery", "https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1000", "Iconic stone vessels filled with vibrant natural pigments.", "Chouara+Tannery")}
-    `;
-}
-
-function place(name, img, desc, map) {
-    return `
         <div class="card">
-            <img src="${img}" alt="${name}">
-            <h3>${name}</h3>
-            <p>${desc}</p>
-            <a class="btn" href="https://www.google.com/maps/search/?api=1&query=${map}" target="_blank">Navigate</a>
+            <h3>Fes Must-See</h3>
+            <p><strong>Bab Boujloud:</strong> The famous 'Blue Gate' entry to the old city.</p>
+            <p><strong>Chouara Tannery:</strong> Fes's most iconic and sensory-rich site.</p>
+            <p><strong>Al-Attarine Madrasa:</strong> Famous for its delicate cedar and tile work.</p>
+            <a href="https://www.google.com/maps/search/Fes+Medina+Sights" class="btn">Explore Fes Map</a>
         </div>
     `;
 }
 
-function day(title, desc, img) {
-    return `
-        <div class="card">
-            <img src="${img}" alt="${title}">
-            <h3>${title}</h3>
-            <p>${desc}</p>
-        </div>
-    `;
-}
-
-home();
+show('home');
 </script>
 </body>
 </html>
