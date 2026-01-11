@@ -3,403 +3,261 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Morocco | Private Itinerary</title>
-    
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Morocco">
+    <title>Morocco | Private Journey</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --bg-cream: #F9F7F2;
-            --text-dark: #2D2926;
-            --accent-brown: #8C7355;
-            --border-light: #E5E1D8;
-            --white: #FFFFFF;
-        }
-
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
+            --bg: #F9F7F2;
+            --accent: #7a4a2e;
+            --text: #2b2b2b;
+            --light-text: #777;
+            --card-bg: #ffffff;
         }
 
         body {
             margin: 0;
-            padding: 0;
-            background-color: var(--bg-cream);
-            color: var(--text-dark);
             font-family: 'Inter', sans-serif;
-            font-size: 14px;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, .serif {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 400;
-            margin-top: 0;
-        }
-
-        /* Layout UI */
-        #app {
-            max-width: 500px;
-            margin: 0 auto;
-            min-height: 100vh;
-            padding-bottom: 80px;
-            background-color: var(--bg-cream);
+            padding-bottom: 80px; /* Space for nav */
         }
 
         header {
-            padding: 40px 24px 20px;
             text-align: center;
+            padding: 40px 20px 20px;
+            background: var(--bg);
         }
 
-        .logo {
-            width: 120px;
-            margin-bottom: 20px;
+        header img {
+            width: 50px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
-        .nav-bar {
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            margin: 0;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--light-text);
+            margin-top: 5px;
+        }
+
+        /* Fixed Bottom Navigation for iPhone */
+        nav {
             position: fixed;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
             max-width: 400px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border: 0.5px solid var(--border-light);
-            border-radius: 40px;
             display: flex;
             justify-content: space-around;
-            padding: 12px;
+            padding: 12px 0;
+            border-radius: 40px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        .nav-item {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            color: var(--accent-brown);
-            text-align: center;
-        }
-
-        /* Page Transitions */
-        .page {
-            display: none;
-            padding: 0 24px;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Editorial Elements */
-        .hero-frame {
-            width: 100%;
-            height: 450px;
-            border-radius: 200px 200px 0 0;
-            overflow: hidden;
-            margin-bottom: 30px;
-        }
-
-        .hero-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .divider {
-            height: 0.5px;
-            background-color: var(--border-light);
-            margin: 30px 0;
-            width: 100%;
-        }
-
-        .label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-brown);
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        /* Itinerary Styling */
-        .day-block {
-            margin-bottom: 40px;
-        }
-
-        .day-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            border-bottom: 0.5px solid var(--border-light);
-            padding-bottom: 8px;
-            margin-bottom: 16px;
-        }
-
-        .event {
-            margin-bottom: 20px;
-            padding-left: 10px;
-            border-left: 1px solid var(--accent-brown);
-        }
-
-        .event h3 { font-size: 1.2rem; margin-bottom: 4px; }
-        .event p { margin: 0; font-size: 0.9rem; color: #666; }
-
-        /* Place Cards */
-        .place-card {
-            background: var(--white);
-            margin-bottom: 24px;
-            border-radius: 4px;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .place-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .place-info {
-            padding: 16px;
-        }
-
-        /* Detail Page Overlay */
-        #detail-view {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--bg-cream);
-            z-index: 2000;
-            display: none;
-            overflow-y: auto;
-            padding: 40px 24px;
-        }
-
-        .btn-nav {
-            display: inline-block;
-            background: var(--text-dark);
-            color: var(--white);
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 2px;
-            font-size: 12px;
-            letter-spacing: 1px;
-            margin-top: 20px;
-        }
-
-        .close-detail {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
+        nav button {
             background: none;
             border: none;
-            cursor: pointer;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        nav button.active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        main {
+            padding: 10px 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 2px; /* Editorial square look */
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            border-radius: 0;
+            margin-bottom: 15px;
+            object-fit: cover;
+            /* Arch shape for editorial feel */
+            clip-path: ellipse(100% 100% at 50% 100%);
+            border-top-left-radius: 150px;
+            border-top-right-radius: 150px;
+        }
+
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            margin: 15px 0 8px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: white;
         }
     </style>
 </head>
+
 <body>
 
-<div id="app">
-    <header>
-        <img src="https://i.ibb.co/LdM6Xp5/morocco-logo.png" alt="Morocco" class="logo">
-        <div class="label">Private Expedition</div>
-        <h1 style="font-size: 2.5rem;">Jan 17 — 24</h1>
-    </header>
+<header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flag_of_Morocco.svg/125px-Flag_of_Morocco.svg.png" alt="Morocco Flag">
+    <h1>Morocco</h1>
+    <p class="subtitle">Private Journey · Jan 17–24</p>
+</header>
 
-    <nav class="nav-bar">
-        <a href="#" class="nav-item" onclick="showPage('home')">Home</a>
-        <a href="#" class="nav-item" onclick="showPage('itinerary')">Plan</a>
-        <a href="#" class="nav-item" onclick="showPage('desert')">Desert</a>
-        <a href="#" class="nav-item" onclick="showPage('places')">Guide</a>
-        <a href="#" class="nav-item" onclick="showPage('map')">Map</a>
-    </nav>
+<main id="app"></main>
 
-    <section id="home" class="page active">
-        <div class="hero-frame">
-            <img src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&q=80&w=800" alt="Morocco View">
-        </div>
-        <span class="label">The Kingdom</span>
-        <h2>A Cultural Tapestry</h2>
-        <p>Morocco is a sensory symphony where ancient traditions meet a sophisticated modern spirit. From the rhythmic chanting of the Medina to the silent expanses of the Sahara, this journey is designed to immerse you in the "Maghreb al-Aqsa"—the Land of the Furthest Sunset.</p>
-        
-        <div class="divider"></div>
-        
-        <h3>Cuisine & Etiquette</h3>
-        <p>Expect tagines infused with saffron and preserved lemons. When dining, it is customary to use the right hand. Mint tea is not just a drink; it is a gesture of hospitality that should always be accepted with gratitude.</p>
-        
-        <div class="divider"></div>
-        
-        <h3>January Weather</h3>
-        <p>Days are crisp and sunny (approx 18°C), while evenings in the desert and riads can drop significantly (7°C). We recommend light layers for the day and a structured wool coat or cashmere for the evenings.</p>
-    </section>
-
-    <section id="itinerary" class="page">
-        <span class="label">The Path</span>
-        <h2 style="font-size: 2rem;">Daily Schedule</h2>
-        
-        <div class="day-block">
-            <div class="day-header">
-                <span class="serif">Day 01</span>
-                <span>Jan 17</span>
-            </div>
-            <div class="event">
-                <h3>Arrival Marrakesh</h3>
-                <p>7:00 PM Arrival. Private transfer to Riad La Lumière d’Étoile in the heart of Mouassine.</p>
-            </div>
-        </div>
-
-        <div class="day-block">
-            <div class="day-header">
-                <span class="serif">Day 02</span>
-                <span>Jan 18</span>
-            </div>
-            <div class="event">
-                <h3>The Medina Soul</h3>
-                <p>Morning visit to Bahia Palace and Saadian Tombs. Sunset at Jemaa el-Fna.</p>
-            </div>
-        </div>
-
-        <div class="day-block">
-            <div class="day-header">
-                <span class="serif">Day 03</span>
-                <span>Jan 19</span>
-            </div>
-            <div class="event">
-                <h3>Art & Gardens</h3>
-                <p>Majorelle Garden & YSL Museum. Afternoon Hammam experience at the Riad.</p>
-            </div>
-        </div>
-        </section>
-
-    <section id="desert" class="page">
-        <div class="hero-frame" style="height: 300px; border-radius: 0 0 150px 150px;">
-            <img src="https://images.unsplash.com/photo-1505051508008-923feaf90180?auto=format&fit=crop&q=80&w=800" alt="Sahara">
-        </div>
-        <span class="label">The Sahara Passage</span>
-        <h2>Marrakesh to Fes</h2>
-        <p>A three-day odyssey crossing the High Atlas Mountains. We traverse the Tizi n'Tichka pass, explore the fortified village of Ait Ben Haddou, and descend into the dramatic Dades Valley before reaching the golden dunes of Merzouga.</p>
-        <div class="divider"></div>
-        <div class="event">
-            <h3>The Merzouga Experience</h3>
-            <p>A luxury camp stay under the stars. Camel trekking at dusk and traditional Berber music by the fire.</p>
-        </div>
-        <a href="https://moroccofabuloustravel.com/marrakech-to-fes-desert-tour" target="_blank" class="btn-nav">VIEW TOUR DETAILS</a>
-    </section>
-
-    <section id="places" class="page">
-        <span class="label">Curated Collection</span>
-        <h2>Master Places</h2>
-        <div id="places-container">
-            </div>
-    </section>
-
-    <section id="map" class="page">
-        <span class="label">Spatial Overview</span>
-        <h2>Trip Map</h2>
-        <div style="background: var(--white); padding: 20px; border: 0.5px solid var(--border-light); text-align: center;">
-            <p style="font-style: italic;">The Journey from the Red City to the Intellectual Capital.</p>
-            <div class="hero-frame" style="height: 250px; border-radius: 10px;">
-                <img src="https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&q=80&w=800" alt="Map graphic">
-            </div>
-            <p>Navigate to all key destinations via our master coordinates.</p>
-            <a href="https://www.google.com/maps/dir/Marrakesh/Fes" target="_blank" class="btn-nav">OPEN IN GOOGLE MAPS</a>
-        </div>
-    </section>
-</div>
-
-<div id="detail-view">
-    <button class="close-detail" onclick="closeDetail()">×</button>
-    <div id="detail-content"></div>
-</div>
+<nav>
+    <button onclick="show('home', this)" class="active">Overview</button>
+    <button onclick="show('marrakech', this)">Marrakech</button>
+    <button onclick="show('desert', this)">Desert</button>
+    <button onclick="show('fes', this)">Fes</button>
+</nav>
 
 <script>
-    const places = [
-        {
-            name: "Bahia Palace",
-            city: "Marrakesh",
-            img: "https://images.unsplash.com/photo-1590050752117-23a9d7fc2440?auto=format&fit=crop&q=80&w=800",
-            desc: "A 19th-century masterpiece of Moroccan architecture. The palace features intricate floor-to-ceiling marquetry, zellij tilework, and lush courtyard gardens designed to capture the essence of Islamic beauty.",
-            lat: "31.6218",
-            lng: "-7.9817"
-        },
-        {
-            name: "Chouara Tannery",
-            city: "Fes",
-            img: "https://images.unsplash.com/photo-1549944850-84e00be4203b?auto=format&fit=crop&q=80&w=800",
-            desc: "The largest and oldest tannery in Fes, dating back to the 11th century. Witness the traditional process of leather dyeing in stone vessels filled with vibrant natural pigments.",
-            lat: "34.0661",
-            lng: "-4.9718"
-        },
-        {
-            name: "Majorelle Garden",
-            city: "Marrakesh",
-            img: "https://images.unsplash.com/photo-1613149633842-8c7601140087?auto=format&fit=crop&q=80&w=800",
-            desc: "A two-acre botanical garden and artist's landscape studio created by Jacques Majorelle, later restored by Yves Saint Laurent. Famed for its unique 'Majorelle Blue'.",
-            lat: "31.6417",
-            lng: "-8.0033"
-        }
-    ];
+const app = document.getElementById("app");
 
-    function showPage(pageId) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(pageId).classList.add('active');
-        window.scrollTo(0, 0);
-    }
+function show(section, btn) {
+    // Update active button state
+    document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+    if(btn) btn.classList.add('active');
 
-    function renderPlaces() {
-        const container = document.getElementById('places-container');
-        container.innerHTML = places.map((place, idx) => `
-            <div class="place-card" onclick="openDetail(${idx})">
-                <img src="${place.img}" alt="${place.name}">
-                <div class="place-info">
-                    <span class="label">${place.city}</span>
-                    <h3 style="margin:0">${place.name}</h3>
-                </div>
-            </div>
-        `).join('');
-    }
+    window.scrollTo(0,0);
 
-    function openDetail(idx) {
-        const place = places[idx];
-        const content = `
-            <div class="hero-frame" style="border-radius:10px;">
-                <img src="${place.img}" alt="${place.name}">
-            </div>
-            <span class="label">${place.city}</span>
-            <h2 style="font-size: 2.5rem;">${place.name}</h2>
-            <p>${place.desc}</p>
-            <a href="https://www.google.com/maps/search/?api=1&query=${place.lat},${place.lng}" class="btn-nav">NAVIGATE TO SITE</a>
-        `;
-        document.getElementById('detail-content').innerHTML = content;
-        document.getElementById('detail-view').style.display = 'block';
-    }
+    if (section === "home") home();
+    if (section === "marrakech") marrakech();
+    if (section === "desert") desert();
+    if (section === "fes") fes();
+}
 
-    function closeDetail() {
-        document.getElementById('detail-view').style.display = 'none';
-    }
+function home() {
+    app.innerHTML = `
+        <div class="card">
+            <h2>The Kingdom</h2>
+            <p>Morocco is a sensory symphony where ancient traditions meet a sophisticated modern spirit. This journey is designed to immerse you in the "Maghreb al-Aqsa"—the Land of the Furthest Sunset.</p>
+            <p><strong>Jan 17–24:</strong> High Atlas, Sahara, and the Imperial Medinas.</p>
+        </div>
+        <div class="card">
+            <h3>Weather & Packing</h3>
+            <p>January offers crisp, sunny days (18°C) and cool desert nights. We recommend light layers and a warm wrap for evenings in the Riad.</p>
+        </div>
+    `;
+}
 
-    // Initialize
-    renderPlaces();
+function marrakech() {
+    app.innerHTML = `
+        <div class="card">
+            <h2>Marrakech</h2>
+            <p><em>Riad La Lumière d’Étoile</em></p>
+            <p>The "Red City" demands curiosity. From hidden palaces to the rhythmic pulse of the souks.</p>
+        </div>
+        ${place("Bahia Palace", "https://images.unsplash.com/photo-1590050752117-23a9d7fc2440?q=80&w=1000", "A 19th-century masterpiece of Moroccan architecture.", "Bahia+Palace")}
+        ${place("Majorelle Garden", "https://images.unsplash.com/photo-1613149633842-8c7601140087?q=80&w=1000", "The legendary blue botanical gardens of YSL.", "Majorelle+Garden")}
+    `;
+}
+
+function desert() {
+    app.innerHTML = `
+        <div class="card">
+            <h2>Sahara Passage</h2>
+            <p>A transition from the peaks of the Atlas to the silence of the dunes.</p>
+        </div>
+        ${day("Dades Valley", "Cross the Tizi n’Tichka Pass to the ksar of Ait Ben Haddou.", "https://images.unsplash.com/photo-1549944850-84e00be4203b?q=80&w=1000")}
+        ${day("Merzouga Dunes", "Sunset camel trek into a luxury Sahara camp stay.", "https://images.unsplash.com/photo-1505051508008-923feaf90180?q=80&w=1000")}
+    `;
+}
+
+function fes() {
+    app.innerHTML = `
+        <div class="card">
+            <h2>Fes</h2>
+            <p><em>Riad Fes Maya Suite</em></p>
+            <p>The intellectual soul of Morocco and the world's most complete medieval city.</p>
+        </div>
+        ${place("Chouara Tannery", "https://images.unsplash.com/photo-1528127269322-539801943592?q=80&w=1000", "Iconic stone vessels filled with vibrant natural pigments.", "Chouara+Tannery")}
+    `;
+}
+
+function place(name, img, desc, map) {
+    return `
+        <div class="card">
+            <img src="${img}" alt="${name}">
+            <h3>${name}</h3>
+            <p>${desc}</p>
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&query=${map}" target="_blank">Navigate</a>
+        </div>
+    `;
+}
+
+function day(title, desc, img) {
+    return `
+        <div class="card">
+            <img src="${img}" alt="${title}">
+            <h3>${title}</h3>
+            <p>${desc}</p>
+        </div>
+    `;
+}
+
+home();
 </script>
-
 </body>
 </html>
